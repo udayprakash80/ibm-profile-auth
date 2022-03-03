@@ -4,9 +4,12 @@
 <div>
   <mat-form-field appearance="outline" style="width: 470px;">
     <mat-label>Name</mat-label>
-    <input type="text" matInput class="form-control" formControlName="nameFormControl">
+    <input type="text" matInput class="form-control" formControlName="nameFormControl" pattern="[A-Za-z]">
     <mat-error *ngIf="nameFormControl?.errors?.['required']">
       Name is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="nameFormControl?.errors?.['pattern']">
+      Name is <strong>not valid</strong>
     </mat-error>
   </mat-form-field>
 </div>
