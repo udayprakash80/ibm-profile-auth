@@ -35,10 +35,10 @@ export class RegistrationComponent implements OnInit {
     if(this.registrationForm.valid){
       this.appService.registerUser().subscribe( (data: any) => {
         if(data?.success){
-          localStorage.setItem('loginToken', String(true));
+          sessionStorage.setItem('loginToken', String(true));
           this.router.navigateByUrl('profile').then(r => {});
         } else {
-          localStorage.setItem('loginToken', String(false));
+          sessionStorage.setItem('loginToken', String(false));
         }
       });
     }
