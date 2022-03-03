@@ -10,17 +10,17 @@ import {AuthService} from "../auth.service";
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  registrationForm: FormGroup;
-  nameFormControl = new FormControl('', [Validators.required]);
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  passwordFormControl = new FormControl('', [Validators.required]);
-  bioFormControl = new FormControl('', [Validators.required]);
+  registrationForm!: FormGroup;
 
   constructor(private appService: AppService,
               private router: Router,
               private   authService: AuthService,
-              fb: FormBuilder,) {
-    this.registrationForm = fb.group({
+              private fb: FormBuilder) {
+
+  }
+
+  ngOnInit(): void {
+    this.registrationForm = this.fb.group({
       nameFormControl: ['', Validators.required],
       emailFormControl: ['', [Validators.required, Validators.email]],
       passwordFormControl: ['', Validators.required],
@@ -28,11 +28,13 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
+  get nameFormControl() { return this.registrationForm.get('nameFormControl'); }
+  get emailFormControl() { return this.registrationForm.get('emailFormControl'); }
+  get passwordFormControl() { return this.registrationForm.get('passwordFormControl'); }
+  get bioFormControl() { return this.registrationForm.get('bioFormControl'); }
 
   onSubmit(){
-    if(this.registrationForm.valid){
+    if(this.registrationForm?.valid){
       this.appService.registerUser().subscribe( (data: any) => {
         if(data?.success){
           sessionStorage.setItem('loginToken', String(true));
