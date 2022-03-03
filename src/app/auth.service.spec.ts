@@ -13,4 +13,13 @@ describe('AuthService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('redirectToUrl by default', () => {
+    expect(service.redirectToUrl).toEqual('');
+  });
+
+  it('isAuthenticated method by default', () => {
+    expect(service.isAuthenticated).toBeTruthy();
+  });
+
 });
