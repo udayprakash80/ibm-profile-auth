@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
+  redirectToUrl: string = '/cookies';
   constructor() {}
   public isAuthenticated(): boolean {
     const token = sessionStorage.getItem('loginToken');
