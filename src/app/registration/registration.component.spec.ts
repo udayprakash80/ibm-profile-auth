@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegistrationComponent } from './registration.component';
-import {Udaya_appService} from "../udaya_app.service";
+import {AppService} from "../app.service";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {RouterTestingModule} from "@angular/router/testing";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -13,7 +13,7 @@ fdescribe('RegistrationComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ RegistrationComponent ],
       imports: [ReactiveFormsModule, HttpClientTestingModule, RouterTestingModule],
-      providers: [Udaya_appService]
+      providers: [AppService]
     })
     .compileComponents();
   });
